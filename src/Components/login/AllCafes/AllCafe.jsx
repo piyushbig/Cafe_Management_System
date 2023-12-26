@@ -5,12 +5,12 @@ export function AllCafe(){
     return(
         <Container fluid="md">
         <Row> 
-          <div><Col><h1>All Cafes</h1></Col></div>
+          <div id="container"><Col><h1>All Cafes</h1></Col></div>
         </Row>
 
         <Table className="mt-4">
-        <thead >
-            <tr>
+        <thead id="tbl_head">
+            <tr >
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email Id</th>

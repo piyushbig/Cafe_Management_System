@@ -1,0 +1,12 @@
+.carousel{
+     position: relative;
+     overflow: hidden;
+    padding: 2px;
+    border-radius: 10px;
+box-shadow: rgb(38, 57, 77) 20px 20px 30px -10px;}
+
+.image img{
+     object-fit: cover;
+     width: 100%; /* Ensure image width matches the Carousel width */
+     height: 100%;
+}

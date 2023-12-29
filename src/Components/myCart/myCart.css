@@ -11,7 +11,12 @@ h6{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
    
 }
-tr{
-    background-color: palevioletred!important;
+
+#footer{
+    width: 100%;
+    height: "50px";
+    
+    background-color:rgb(131, 102, 112);
 }
+
 

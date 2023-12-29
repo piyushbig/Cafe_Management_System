@@ -1,6 +1,6 @@
 #container{
     text-align: center;
-    background-color: rgb(225, 115, 133);
+    background-color: rgb(121, 88, 94);
     height: 70px;
    border-radius: 20px;
    color:white;
@@ -11,7 +11,7 @@ h6{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
    
 }
-tr{
+tr,th{
     background-color: palevioletred!important;
 }
 

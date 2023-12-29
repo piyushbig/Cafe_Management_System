@@ -8,7 +8,7 @@ export function MyOrder(){
           <div id="container"><Col><h1>My Orders</h1></Col></div>
         </Row>
 
-        <Table className="mt-4">
+        <Table className="mt-4 sm-8 lg md">
         <thead id="tbl_head">
             <tr >
                 <th>Order Id</th>

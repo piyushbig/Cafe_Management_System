@@ -9,10 +9,9 @@ function App() {
   return (
     
     <>
-    <Login/>
-    <AllCafe/>
+    
     <MyCart/>
-    <MyOrder/>
+    
     </>
   );
 }

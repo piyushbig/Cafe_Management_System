@@ -1,5 +1,6 @@
-import { Alert, Col, Container, Row, Table } from "react-bootstrap";
+import { Alert, Button, Col, Container, Row, Table } from "react-bootstrap";
 import './myCart.css'
+import { MDBContainer, MDBFooter } from "mdb-react-ui-kit";
 
 export function MyCart(){
     return(
@@ -8,7 +9,7 @@ export function MyCart(){
           <div id="container"><Col><h1>My Cart</h1></Col></div>
         </Row>
 
-        <Table className="mt-4">
+        <Table className="mt-4 sm-8 lg md">
         <thead id="tbl_head">
             <tr >
                 <th>Food</th>
@@ -23,7 +24,15 @@ export function MyCart(){
         <tbody>
 
         </tbody>
-        </Table>
+       </Table>
+
+       <MDBFooter className='text-center text-white' >
+      <MDBContainer className='p-4'></MDBContainer>
+
+      <div className='text-center p-3' id="footer">
+      <Button variant="danger" id="btn">CheckOut</Button>{' '}
+      </div>
+    </MDBFooter>
       </Container>
     );
 }

@@ -1,23 +1,27 @@
 // import logo from './logo.svg';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import AllCategories from './Components/categories/AllCategories';
-import Login from './Components/login/login';
-import Registration from './Components/registration/Registration';
+import "./App.css";
+import AddFood from "./Components/Cafe/AddFood";
+import foodCard from "./Components/Cafe/foodCard";
+import Login from "./Components/login/login";
+import NavbarAdmin from "./Components/Admin/NavbarAdmin";
+import AdminRegister from "./Components/Admin/AdminRegister";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Admin } from "./Components/Admin/Admin";
+import HomeNavbar from "./Components/Home/HomeNavbar";
+import { Home } from "./Components/Home/Home";
+import { Customer } from "./Components/customer/Customer";
+import { Cafe } from "./Components/Cafe/Cafe";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/login' element={<Login />}></Route>  
-          <Route path='/allCategories' element={<AllCategories />}></Route>  
-          <Route path='/registration' element={<Registration />}></Route>  
-        </Routes>
-      </BrowserRouter>
-    
-      
-      </>
+    // <Login/>
+    // <AddFood />
+    // <foodCard/>
+
+    // <Admin/>
+    <Home />
+    // <Customer/>
+    // <Cafe />
   );
 }
 

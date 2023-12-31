@@ -48,7 +48,7 @@ const Login = () => {
         <div className="right">
           <h1>Login</h1>
           <form>
-          <label className="labels">User Role</label>
+            <label className="labels">User Role</label>
             {/* <input
               type="text"
               placeholder="Username"
@@ -56,29 +56,18 @@ const Login = () => {
               
             /> */}
             <select id="dropDown">
-            <option value="">Choose one</option>
-            <option value="Costumer">Admin</option>
-            <option value="Costumer">Customer</option>
-            <option value="Costumer">Cafe</option>
-            <option value="Costumer">Delivery Person</option>
-
+              <option value="">Choose one</option>
+              <option value="Costumer">Admin</option>
+              <option value="Costumer">Customer</option>
+              <option value="Costumer">Cafe</option>
+              <option value="Costumer">Delivery Person</option>
             </select>
             <label className="labels">Email</label>
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              
-            />
+            <input type="email" placeholder="Email" name="email" />
             <label>Password</label>
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              
-            />
+            <input type="password" placeholder="Password" name="password" />
             {/* {err && err} */}
-            <button >Login</button>
+            <button>Login</button>
           </form>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import './Styles/AdminRegister.css';
+import axios from "axios";
 
 const AdminRegister = () => {
   const [email, setEmail] = useState("");
@@ -37,10 +39,25 @@ const AdminRegister = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setEmail("");
-    setPassword("");
+
+    try {
+      // Create formData object
+      const formData = {
+        email: email,
+        password: password,
+      };
+
+      // Make a POST request to your backend API endpoint
+      const response = await axios.post('http://127.0.0.1:8086/admin/register', formData);
+
+      // Handle the response, e.g., show a success message
+      console.log('Registration successful:', response.data);
+    } catch (error) {
+      // Handle errors, e.g., show an error message
+      console.error('Registration failed:', error.message);
+    }
   };
 
   return (
@@ -77,6 +94,31 @@ const AdminRegister = () => {
           />
           {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
         </Form.Group>
+        <Form.Group
+            className="mt-4"
+            as={Col}
+            md="6"
+            controlId="validationCustomUsername"
+          >
+            <Form.Label>Role</Form.Label>
+            <InputGroup hasValidation>
+              {/* <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text> */}
+              <Form.Control
+                as="select"
+                aria-describedby="inputGroupPrepend"
+                name="role"
+                // onChange={handleChange}
+                required
+              >
+                <option value="">Select User Type</option>
+                <option value="ADMIN">Admin</option>
+                
+              </Form.Control>
+              <Form.Control.Feedback type="invalid">
+                Please select a user type.
+              </Form.Control.Feedback>
+            </InputGroup>
+          </Form.Group>
         <br />
         <Button as="input" type="submit" value="Register" className="button" />
       </Form>

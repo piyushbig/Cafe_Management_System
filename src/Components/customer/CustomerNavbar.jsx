@@ -1,26 +1,55 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import './Styles/CustomerNavbar.css';
+import axios from 'axios';
 
 const CustomerNavbar = () => {
+  const[category,setcategory]=useState([]);
+
+  useEffect(()=>{
+
+    axios.get(`http://localhost:8086/category/fetch`).then((response => {
+            setcategory(response.data);
+        }))
+   
+   },[])
+
+
+
   return (
-    <Navbar bg="light" data-bs-theme="light">
-      <Navbar.Brand href="#home">Cafe Management</Navbar.Brand>
+    <Navbar className="custom-navbar" expand="lg">
+      <Navbar.Brand as={Link} to="/">
+        <img src='https://cdn-icons-png.flaticon.com/512/9620/9620771.png' alt="CafeLogo" className="logo-img" />
+        Cafeto</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <NavDropdown title="Categories" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#category1">Category 1</NavDropdown.Item>
-            <NavDropdown.Item href="#category2">Category 2</NavDropdown.Item>
-            <NavDropdown.Item href="#category3">Category 3</NavDropdown.Item>
+            {
+            category.map((category)=>{
+                  return(
+            <NavDropdown.Item key={category.id} >
+            ({category.categoryId}) {category.name} 
+            </NavDropdown.Item>
+                )})}
           </NavDropdown>
-          <Nav.Link href="#">About Us</Nav.Link>
-          <Nav.Link href="#">Contact Us</Nav.Link>
+          <Nav.Link as={Link} to="/aboutUs">
+            About Us
+          </Nav.Link>
+          <Nav.Link as={Link} to="/contactUs">
+            Contact Us
+          </Nav.Link>
         </Nav>
         <Nav className="ml-auto">
-          <Nav.Link href="/myCart">My Cart</Nav.Link>
-          <Nav.Link href="/myOrder">My Order</Nav.Link>
-          <Nav.Link href="#">Logout</Nav.Link>
+          <Nav.Link as={Link} to="/myCart">
+            My Cart
+          </Nav.Link>
+          <Nav.Link as={Link} to="/myOrder">
+            My Order
+          </Nav.Link>
+          <Nav.Link as={Link}  to="/customer/login">Logout</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

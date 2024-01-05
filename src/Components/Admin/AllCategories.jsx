@@ -1,15 +1,34 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Table } from 'react-bootstrap';
+import { Container, Row, Col, Table, Button } from 'react-bootstrap';
+// import "./Styles/AllCategories.css";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import "./Styles/AllCategories.css";
  
     
 function AllCategories() {
-  const categories = [
-    { id: 1, category: "Chicken", description: "All the food will be made of Chicken", action: <div><button className='update'>Update</button> <button className='delete'>Delete</button></div> },
-    { id: 2, category: "Pizza", description: "this will contain Pizza",  action: <div><button className='update'>Update</button> <button className='delete'>Delete</button></div> },
-    { id: 3, category: "Burger", description: "this will contain Burgers", action: <div><button className='update'>Update</button> <button className='delete'>Delete</button></div> },
-    { id: 4, category: "Veg", description: "this will contain all veg foods",  action: <div><button className='update'>Update</button> <button className='delete'>Delete</button></div> },
-  ];
+  const[category,setcategory]=useState([]);
+
+  const populateData=()=>{
+    axios.get("http://localhost:8086/category/fetch").then((response => {
+      setcategory(response.data);
+  }))
+  }
+  useEffect(()=>{
+
+    populateData();
+   
+   },[])
+
+   const handleDeleteClick=(categoryId)=>{
+    try{
+       axios.delete(`http://localhost:8086/deleteCategory?categoryId=${categoryId}`)
+       populateData();
+    }catch(error){
+          console.log(error)
+    }
+
+}
 
   return (
     <Container className='container mt-5 bg-light'>
@@ -20,19 +39,19 @@ function AllCategories() {
             <Table bordered hover className="table category-table">
               <thead >
                 <tr>
-                  <th className="text-center bg-danger text-light">Category ID</th>
-                  <th className="text-center bg-danger text-light">Category</th>                 
-                  <th className="text-center bg-danger text-light">Description</th>
-                  <th className="text-center bg-danger text-light">Action</th>
+                  <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }}>Category ID</th>
+                  <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }}>Category</th>                 
+                  <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }}>Description</th>
+                  <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }}>Action</th>
                 </tr>
               </thead>
               <tbody className='tablerow'>
-                {categories.map((category) => (
+                {category.map((category) => (
                   <tr key={category.id}>
-                    <td className="text-center">{category.id}</td>
-                    <td className="text-center">{category.category}</td>                 
+                    <td className="text-center">{category.categoryId}</td>
+                    <td className="text-center">{category.name}</td>                 
                     <td className="text-center">{category.description}</td>
-                    <td className="text-center">{category.action}</td>
+                    <td><Button variant="danger" onClick={() => handleDeleteClick(category.categoryId)}> Delete</Button></td>
                   </tr>
                 ))}
               </tbody>

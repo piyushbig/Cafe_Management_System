@@ -1,9 +1,9 @@
 import { Alert, Col, Container, Row, Table } from "react-bootstrap";
-import '../Cafe/myOrder.css'
+import './myOrder.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function MyOrder(){
+export default function CafeOrder(){
 
   const [orderList,setOrderList]=useState([]);
 

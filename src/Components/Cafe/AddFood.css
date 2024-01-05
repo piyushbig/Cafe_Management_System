@@ -21,8 +21,9 @@ label{
 }
 
 h5{
-    background-color: tomato;
+    background-color: #325f53;
     padding: 10px;
+    color: white;
     border-radius: 10px;
     display: flex;
     justify-content: center;

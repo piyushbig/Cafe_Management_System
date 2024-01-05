@@ -1,6 +1,6 @@
 .login {
     height: 550px;
-    background-color: rgb(200, 198, 240);
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +41,7 @@
           padding: 10px;
           border: none;
           background-color: white;
-          color: rebeccapurple;
+          color: #325f53;
           font-weight: bold;
           cursor: pointer;
           
@@ -79,7 +79,7 @@
             width: 50%;
             padding: 10px;
             border: none;
-            background-color: #938eef;
+            background-color: #325f53;
             color: white;
             font-weight: bold;
             cursor: pointer;

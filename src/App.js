@@ -9,12 +9,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Admin } from "./Components/Admin/Admin";
 import HomeNavbar from "./Components/Home/HomeNavbar";
 import { Home } from "./Components/Home/Home";
-import { Customer } from "./Components/customer/Customer";
-import { Cafe } from "./Components/Cafe/Cafe";
+
 import AllCategories from "./Components/Admin/AllCategories";
 import AboutUs from "./Components/AboutUs/AboutUs";
-import RegisterCafe from "./Components/Home/RegisterCafe";
-import RegisterCustomer from "./Components/Home/RegistrationCustomer";
+
 import CustomerNavbar from "./Components/customer/CustomerNavbar";
 import MyCart from "./Components/customer/MyCart";
 import MyOrder from "./Components/customer/MyOrder";
@@ -29,6 +27,9 @@ import ContactUs from "./Components/ContactUs/ContactUs";
 import HomePage from "./Components/Home/HomePage/HomePage";
 import ViewMyItems from "./Components/Cafe/viewMyItem";
 import CafeLogout from "./Components/Home/CafeLogout";
+import RegistrationForm from "./Components/Home/RegistrationForm";
+import AddressForm from "./Components/Home/AddressForm";
+
 
 function App() {
   return (
@@ -56,31 +57,28 @@ function App() {
         <Route path="/homePage" element={<HomePage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/contactUs" element={<ContactUs />} />
-        <Route path="/register-cafe" element={<RegisterCafe />} />
-        <Route path="/register-customer" element={<RegisterCustomer />} />
-        <Route path="/customer/login" element={<CustomerLogin />} />
+
+        <Route path="/registrationForm" element={<RegistrationForm />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/cafe/login" element={<CafeLogin />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        
       </Routes>
 
       <Routes>
         <Route path="/customer/dashboard" element={<CustomerNavbar />} />
         <Route path="/myCart" element={<MyCart />} />
         <Route path="/myOrder" element={<MyOrder />} />
-        
+        <Route path="/AddressForm" element={<AddressForm />} />
       </Routes>
       <Routes>
         <Route path="/cafe/dashboard" element={<CafeNavbar />} />
         <Route path="/reastuarantOrder" element={<CafeOrder />} />
         <Route path="/addFood" element={<AddFood />} />
-        <Route path="/viewMyItems" element={<ViewMyItems/>} />
+        <Route path="/viewMyItems" element={<ViewMyItems />} />
       </Routes>
       <Routes>
         <Route path="/admin/dashboard" element={<NavbarAdmin />} />
-        <Route path="/registerAdmin" element={<AdminRegister />} />
-        <Route path="/addCategory" element={<AddCategory/>} />
-        <Route path="/registerAdmin" element={<AdminRegister />} />
+        <Route path="/addCategory" element={<AddCategory />} />
+
         <Route path="/allCatrgories" element={<AllCategories />} />
         <Route path="/allCafes" element={<AllCafe />} />
       </Routes>

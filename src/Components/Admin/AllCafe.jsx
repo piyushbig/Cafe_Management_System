@@ -4,6 +4,7 @@ import "./Styles/CafeList.css";
 // import { featchCafe } from '../../Service/CafeService';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import NavbarAdmin from './NavbarAdmin';
  
     
 function AllCafe() {
@@ -33,6 +34,8 @@ function AllCafe() {
    
 
   return (
+    <>
+    <NavbarAdmin/>
     <Container className='container mt-5 bg-light'>
       <Row className="justify-content-center">
         <Col xs={12} md={12}>
@@ -76,6 +79,7 @@ function AllCafe() {
         </Col>
       </Row>
     </Container>
+    </>
   );
 }
 

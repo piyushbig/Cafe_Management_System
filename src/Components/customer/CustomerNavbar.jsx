@@ -13,7 +13,7 @@ const CustomerNavbar = () => {
     axios.get(`http://localhost:8086/category/fetch`).then((response => {
             setcategory(response.data);
         }))
-   
+      
    },[])
 
 

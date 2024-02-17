@@ -4,6 +4,7 @@ import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import "./Styles/AllCategories.css";
+import NavbarAdmin from './NavbarAdmin';
  
     
 function AllCategories() {
@@ -31,6 +32,8 @@ function AllCategories() {
 }
 
   return (
+    <>
+    <NavbarAdmin/>
     <Container className='container mt-5 bg-light'>
       <Row className="justify-content-center">
         <Col xs={12} md={12}>
@@ -60,6 +63,7 @@ function AllCategories() {
         </Col>
       </Row>
     </Container>
+    </>
   );
 }
 

@@ -4,6 +4,7 @@ import "./Styles/viewMyItems.css";
 // import { featchCafe } from '../../Service/CafeService';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import CafeNavbar from './CafeNavbar';
  
     
 function ViewMyItems() {
@@ -79,6 +80,8 @@ function ViewMyItems() {
   };
 
   return (
+    <>
+    <CafeNavbar/>
     <Container className='container mt-5 bg-light'>
       <Row className="justify-content-center">
         <Col xs={12} md={12}>
@@ -155,6 +158,7 @@ function ViewMyItems() {
         </Col>
       </Row>
     </Container>
+    </>
   );
 }
 

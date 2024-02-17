@@ -1,5 +1,6 @@
 import React from "react";
 import './AboutUs.css'; // Make sure to import your CSS file where you define the styles for the background image
+import HomeNavbar from "../Home/HomeNavbar";
 
 const AboutUs = () => {
   const backgroundImageStyle = {
@@ -22,6 +23,8 @@ const AboutUs = () => {
   };
 
   return (
+    <>
+    <HomeNavbar />
     <div style={backgroundImageStyle}>
       <div style={contentStyle}>
         <div className="text-center">
@@ -44,6 +47,10 @@ const AboutUs = () => {
         </p>
       </div>
     </div>
+
+
+    </>
+    
   );
 };
 

@@ -2,6 +2,7 @@ import { Alert, Col, Container, Row, Table } from "react-bootstrap";
 import '../Cafe/myOrder.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
+import CustomerNavbar from "./CustomerNavbar";
 
 export default function MyOrder(){
 
@@ -22,6 +23,8 @@ export default function MyOrder(){
         });
     }, []);
     return(
+        <>
+        <CustomerNavbar/>
         <Container fluid="md">
         <Row> 
           <div id="container"><Col><h1>My Orders</h1></Col></div>
@@ -71,5 +74,6 @@ export default function MyOrder(){
         </Table>
         
       </Container>
+      </>
     );
 }

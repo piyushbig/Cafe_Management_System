@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Alert, Button, Col, Container, Row, Table } from 'react-bootstrap';
 import { MDBContainer, MDBFooter } from 'mdb-react-ui-kit';
 import './Styles/myCart.css';
+import CustomerNavbar from './CustomerNavbar';
 
 export default function MyCart() {
   const [cartItems, setCartItems] = useState([]);
@@ -22,7 +23,9 @@ export default function MyCart() {
   
 
   return (
-    <Container fluid="md">
+    <> 
+    <CustomerNavbar/>  
+     <Container fluid="md">
       <Row>
         <div id="container">
           <Col>
@@ -73,5 +76,7 @@ export default function MyCart() {
         </div>
       </MDBFooter>
     </Container>
+    </>
+
   );
 }

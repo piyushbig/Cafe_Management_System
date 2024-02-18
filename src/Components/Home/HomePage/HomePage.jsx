@@ -3,13 +3,16 @@ import './HomePage.css'; // Import a CSS file for styling
 
 import SearchBar from './SearchBar';
 
-import ItemsData from './Cards/ItemsData';
+
 import Footer from "../Footerr/Footerr/Footerr"
+import HomeNavbar from '../HomeNavbar';
+import ProductCard from './Cards/ProductCard';
 
 
 const HomePage = () => {
   return (
     <>
+    <HomeNavbar />
     <div className="homePageContainer">
       {/* Static content on the left side */}
       <div className="leftContent">
@@ -32,7 +35,7 @@ const HomePage = () => {
         <SearchBar/>
       {/* </div> */}
     
-        <ItemsData/>
+        <ProductCard/>
         <Footer />
     </>
   );

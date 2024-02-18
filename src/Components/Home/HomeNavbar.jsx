@@ -5,6 +5,7 @@ import './HomeNavbar.css'; // Import your custom CSS file
 import HomePage from './HomePage/HomePage';
 
 
+
 const HomeNavbar = () => {
   return (
     
@@ -36,25 +37,25 @@ const HomeNavbar = () => {
           </Nav.Link>
         </Nav>
         <Nav className="ml-auto">
-          <Nav.Link as={Link} to="/register-cafe">
+          {/* <Nav.Link as={Link} to="/register-cafe">
             Register Cafe
+          </Nav.Link> */}
+          <Nav.Link as={Link} to="/registrationForm">
+            Register User
           </Nav.Link>
-          <Nav.Link as={Link} to="/register-customer">
-            Register Customer
-          </Nav.Link>
-          <Nav.Link as={Link} to="/cafe/login">
+          {/* <Nav.Link as={Link} to="/cafe/login">
            Cafe Login
-          </Nav.Link>
-          <Nav.Link as={Link} to="/customer/login">
+          </Nav.Link> */}
+          {/* <Nav.Link as={Link} to="/customer/login">
            Customer Login
-          </Nav.Link>
-          <Nav.Link as={Link} to="/admin/login">
-            Admin Login
+          </Nav.Link> */}
+          <Nav.Link as={Link} to="/login">
+            Login
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-    <HomePage/>
+    {/* <HomePage/> */}
 
     </>
   );

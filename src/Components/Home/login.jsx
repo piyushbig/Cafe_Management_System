@@ -7,144 +7,102 @@ import axios from "axios";
 import { Form, InputGroup } from "react-bootstrap";
 import NavbarAdmin from "../Admin/NavbarAdmin";
 import HomeNavbar from "./HomeNavbar";
+import { getToken } from "../login/Auth";
 
 const Login = () => {
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     password: "",
-    role: "",
   });
 
   //   const [err, setErr] = useState(null);
 
   const navigate = useNavigate();
 
-  //   const handleChange = (e) => {
-  //     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  //   };
-
-  //   const { login } = useContext(AuthContext);
-
-  //   const handleLogin = async (e) => {
-  //     e.preventDefault();
-
-  //     try {
-  //       await login(inputs);
-  //       navigate("/");
-  //     } catch (err) {
-  //       setErr(err.response.data);
-  //     }
-  //   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData({
       ...formData,
       [name]: value,
     });
   };
-  const handleSubmit = async (username, password) => {
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // if (!isEmailValid()) {
+    //   alert('Invalid email address');
+    //   return;
+    // }
+
+    // if (!isPasswordValid()) {
+    //   alert('Invalid password. It must be at least 8 characters with at least one uppercase letter, one lowercase letter, and one digit.');
+    //   return;
+    // }
+
+   
+    //changed url /user/login
     try {
-      const response = await fetch("http://localhost:8086/login/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await axios.post('http://localhost:8086/login/user', formData);
+        console.log(response.data);
+        console.log(response.data.role);
+        console.log(response.data.token);
+       console.log(response.data.message)
+       localStorage.setItem("token",JSON.stringify(response.data.token));
+       console.log(getToken());
+      //  console.log(localStorage.getItem("token"));
 
-      if (response.ok) {
-        const authenticationResponse = await response.json();
-        console.log("Authentication Response:", authenticationResponse); // Log the entire response
+        
+      // role base login condition
+      if (response.data.success ===true) {
+        // Redirect based on user type
+        if (response.data.role === 'Admin') {
+          // navigate(/a_sidebar/${response.data.userId});
+          navigate("/admin/dashboard");
+        } else if (response.data.role === 'Cafe') {
+          // navigate(/s_sidebar/${response.data.userId});
+          navigate("/cafe/dashboard");
+        } else if (response.data.role === 'Customer') 
+          
 
-        if (authenticationResponse.isSuccess()) {
-          const userRole = authenticationResponse.role;
-          console.log("User Role:", userRole); // Log the user role
-
-          // Continue with the rest of your code
-          // ...
+        {
+          // navigate(/c_sidebar/${response.data.userId});
+          navigate("/customer/dashboard");
         } else {
-          alert("Authentication failed: " + authenticationResponse.message);
+          alert('Unknown user type');
         }
+
+        // Optionally, you can store user data in the state or context for further use
       } else {
-        alert("Authentication failed");
+        // Handle login error, e.g., incorrect credentials
+        alert('Login failed. Please check your credentials.');
       }
     } catch (error) {
-      console.error("Error during authentication:", error);
+      console.error('Login error:', error);
+      alert('An error occurred during login.');
     }
   };
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
+//  const handleSubmit= async (e)=> {
+//     let response = () => {
+//       return new Promise(function(resolve, reject) {
+//         axios.post('http://localhost:8086/login/user', formData
+          
+//         ).then(response => {
+//           resolve(response);
+//         });
+//       });
+//     };
+//     let responseData = await response();
+//     console.log(responseData.data);
+//   }
 
-  //   try {
-  //     const form = event.currentTarget;
-  //     if (form.checkValidity() === false) {
-  //       event.stopPropagation();
-  //       return;
-  //     }
-
-  //     if (formData.role) {
-  //       try {
-  //         let response;
-  //         let roles;
-  //         let userId;
-  //         let name;
-
-  //         response = await axios.post("http://localhost:8086/login/user", formData);
-
-  //         // if (formData.role === "Admin") {0
-
-  //         //   console.log(response);
-  //         // } else if (formData.role === "Customer") {
-  //         //   response = await axios.post("http://localhost:8086/customer/login", formData);
-  //         //   console.log(response);
-  //         // } else if (formData.role === "Cafe") {
-  //         //   response = await axios.post("http://localhost:8086/cafe/login", formData);
-  //         // }
-
-  //         if (response) {
-  //           roles = response.data.role;
-  //           userId = response.data.status.userId;
-  //           name = response.data.status.name;
-
-  //           console.log("Login successful");
-  //           // Reset form fields or perform other actions upon successful login
-  //           setValidated(true);
-
-  //           if (formData.role) {
-  //             if (response.data.role === "admin") {
-  //               navigate("/adminNavigation");
-  //             } else if (response.data.role === "Customer") {
-  //               navigate("/customer");
-  //             } else if (response.data.role === "Cafe") {
-  //               navigate("/cafe");
-  //             } else if (response.data.role === "Delivery Person") {
-  //               navigate("/delivery-dashboard");
-  //             }
-  //           } else {
-  //             console.error("Invalid role or roles not present in response");
-  //             // Handle invalid role scenario
-  //           }
-  //         } else {
-  //           console.error("No response received from server");
-  //           // Handle no response scenario
-  //         }
-  //       } catch (error) {
-  //         console.error("Error while logging in: ", error);
-  //         // Handle error scenario
-  //       }
-  //     } else {
-  //       console.error("Role not selected");
-  //       // Handle scenario where no role is selected
-  //     }
-
-  //   } catch (error) {
-  //     console.error("Error logging in: ", error);
-  //     // Handle error scenario, show error message, etc.
-  //   }
-  // };
+  // const token = localStorage.getItem("token");
+  // if (token) {
+  //   setAuthToken(token);
+  // }
 
   return (
     <>
@@ -161,10 +119,10 @@ const Login = () => {
                 md="6"
                 controlId="validationCustomUsername"
               >
-                <Form.Label>Role</Form.Label>
+                {/* <Form.Label>Role</Form.Label> */}
                 <InputGroup hasValidation>
                   {/* <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text> */}
-                  <Form.Control
+                  {/* <Form.Control
                     as="select"
                     aria-describedby="inputGroupPrepend"
                     name="role"
@@ -175,17 +133,17 @@ const Login = () => {
                     <option value="Admin">Admin</option>
                     <option value="Customer">Customer</option>
                     <option value="Cafe">Cafe</option>
-                  </Form.Control>
-                  <Form.Control.Feedback type="invalid">
+                  </Form.Control> */}
+                  {/* <Form.Control.Feedback type="invalid">
                     Please select a user type.
-                  </Form.Control.Feedback>
+                  </Form.Control.Feedback> */}
                 </InputGroup>
               </Form.Group>
-              <label className="labels">Email</label>
+              <label className="labels">Username</label>
               <input
-                // type="email"
-                placeholder="name"
-                name="name"
+                type="text"
+                placeholder="username"
+                name="username"
                 onChange={handleChange}
               />
               <label>Password</label>

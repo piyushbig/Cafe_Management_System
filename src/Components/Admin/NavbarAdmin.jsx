@@ -51,7 +51,7 @@ const NavbarAdmin = () => {
           
         </Nav>
         <Nav className="ml-auto">
-          <Nav.Link as={Link} to="/admin/login">Logout</Nav.Link>
+          <Nav.Link as={Link} to="/login">Logout</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

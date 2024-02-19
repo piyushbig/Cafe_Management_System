@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import "./App.css";
-import AddFood from "./Components/Cafe/AddFood";
+import AddFood from "./Components/Cafe/AddProduct";
 import foodCard from "./Components/Cafe/foodCard";
 import Login from "./Components/Home/login";
 import NavbarAdmin from "./Components/Admin/NavbarAdmin";
@@ -29,7 +29,6 @@ import ViewMyItems from "./Components/Cafe/viewMyItem";
 import CafeLogout from "./Components/Home/CafeLogout";
 import RegistrationForm from "./Components/Home/RegistrationForm";
 import AddressForm from "./Components/Home/AddressForm";
-
 
 function App() {
   return (

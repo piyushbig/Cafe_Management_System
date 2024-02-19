@@ -4,6 +4,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Styles/CustomerNavbar.css';
 import axios from 'axios';
+import { logout } from '../login/Auth';
 
 const CustomerNavbar = () => {
   const[category,setcategory]=useState([]);
@@ -15,6 +16,10 @@ const CustomerNavbar = () => {
         }))
       
    },[])
+
+   const handleClick=()=>{
+    logout();
+   }
 
 
 
@@ -49,7 +54,7 @@ const CustomerNavbar = () => {
           <Nav.Link as={Link} to="/myOrder">
             My Order
           </Nav.Link>
-          <Nav.Link as={Link}  to="/customer/login">Logout</Nav.Link>
+          <Nav.Link as={Link}  to="/login" onClick={handleClick} >Logout</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -53,7 +53,7 @@ const CafeNavbar = () => {
           </Nav.Link>
         </Nav>
         <Nav className="ml-auto">
-          <Nav.Link as={Link}  to="/cafe/login">Logout</Nav.Link>
+          <Nav.Link as={Link}  to="/login">Logout</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -18,7 +18,7 @@ function ViewMyItems() {
   });
 
   const populateData=()=>{
-    axios.get('http://localhost:8086/products/product/fetchAll').then((response => {
+    axios.get('http://localhost:8086/products/fetchAll').then((response => {
         setItemList(response.data);
     }))
   }

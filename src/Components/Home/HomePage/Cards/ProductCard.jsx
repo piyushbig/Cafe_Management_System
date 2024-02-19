@@ -11,6 +11,7 @@ const ProductCard = () => {
             try {
                 const response = await axios.get('http://localhost:8086/products/fetchAll');
                 setProducts(response.data);
+                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -20,15 +21,16 @@ const ProductCard = () => {
 
     const handleAddToCart = () => {
         // Add your logic for adding to cart here
-        window.location.href = '/cafe/login';
+        window.location.href = '/login';
     };
-
+    
     return (
         <div className="d-flex flex-wrap justify-content-around">
             {products.map(product => (
                 <Card key={product.productId} style={{ width: '18rem', margin: '10px' }}>
                     <Card.Body>
                         <Card.Title>{product.name}</Card.Title>
+                        <Card.Img>{product.imageData}</Card.Img>
                         <Card.Text>Category: {product.category.name}</Card.Text>
                         <Card.Text>Price: ₹ {product.price}</Card.Text>
                         <Button variant="primary" onClick={() => handleAddToCart(product.productId)} >Add to Cart</Button>

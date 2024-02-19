@@ -279,7 +279,8 @@ import HomeNavbar from "./HomeNavbar";
 function RegisterCustomer() {
   const [validated, setValidated] = useState(false);
   const [customer, setCustomer] = useState({
-    name: "",
+    firstName: "",
+    username:"",
     email: "",
     password: "",
     role: "",
@@ -301,7 +302,7 @@ function RegisterCustomer() {
     }
 
     try {
-      await axios.post("http://localhost:8086/customer/register", customer);
+      await axios.post("http://localhost:8086/register/user", customer);
       console.log("Customer added successfully");
     } catch (error) {
       console.error("Error adding customer: ", error);
@@ -320,12 +321,21 @@ function RegisterCustomer() {
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Form.Group as={Col} md="6" controlId="validationCustom01">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>FirstName</Form.Label>
               <Form.Control
                 required
                 type="text"
                 placeholder="First name"
-                name="name"
+                name="firstName"
+                pattern="[A-Za-z ]+"
+                onChange={handleChange}
+              />
+              <Form.Label>UserName</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="User name"
+                name="username"
                 pattern="[A-Za-z ]+"
                 onChange={handleChange}
               />

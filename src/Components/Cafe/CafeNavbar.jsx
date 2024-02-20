@@ -42,7 +42,7 @@ const CafeNavbar = () => {
             Contact Us
           </Nav.Link>
           <Nav.Link as={Link} to="/reastuarantOrder">
-            Restaurant Orders
+            Cafe Orders
           </Nav.Link>
          
           <Nav.Link as={Link} to="/addFood">

@@ -43,6 +43,7 @@ export default function MyOrder(){
                   <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }}>Price</th>
                 
                   <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }}>Quantity</th>
+                  <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }}>Status</th>
                 
                 </tr>
               </thead>
@@ -59,6 +60,7 @@ export default function MyOrder(){
                 <th className="text-center">{o.order && o.order.cafe ? o.order.cafe.name : 'N/A'}</th>
                 <th className="text-center">{o.product.price}</th>
                 <th className="text-center">{o.quantity}</th>
+                <th className="text-center">{o.order.status}</th>
                 {/* <th>Order Time</th>
                 <th>Order Status</th> */}
                 {/* <th>Delivery Person</th>

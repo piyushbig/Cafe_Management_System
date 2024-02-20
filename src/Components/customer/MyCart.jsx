@@ -13,7 +13,7 @@ export default function MyCart() {
 
   useEffect(() => {
     // Fetch data from your backend API
-    fetch('http://localhost:8086/products/details/approved')
+    fetch('http://localhost:8086/products/details')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

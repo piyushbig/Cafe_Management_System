@@ -8,7 +8,7 @@ import AdminRegister from "./Components/Admin/AdminRegister";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Admin } from "./Components/Admin/Admin";
 import HomeNavbar from "./Components/Home/HomeNavbar";
-import { Home } from "./Components/Home/Home";
+
 
 import AllCategories from "./Components/Admin/AllCategories";
 import AboutUs from "./Components/AboutUs/AboutUs";

@@ -11,6 +11,7 @@ const AddFood = () => {
     category_id: 0,
     price: "",
     description: "",
+    imageData:""
     
   });
 
@@ -163,7 +164,7 @@ const AddFood = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="row mb-3">
+             <div className="row mb-3">
               <div className="col">
                 <div className="form-group">
                   <label htmlFor="firstInput"  className="form-label">Select 1st Image</label>
@@ -175,6 +176,7 @@ const AddFood = () => {
                   />
                 </div>
               </div>
+              {/*
               <div className="col">
                 <div className="form-group">
                   <label htmlFor="secondInput"  className="form-label">Select 2nd Image</label>
@@ -197,7 +199,8 @@ const AddFood = () => {
                   />
                 </div>
               </div>
-            </div> */}
+              */}
+            </div> 
             <div>
                 <div className="col">
                     <button>Submit</button>

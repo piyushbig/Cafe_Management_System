@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Styles/CustomerNavbar.css';
 import axios from 'axios';
 import { logout } from '../login/Auth';
+import ProductCard from '../Home/HomePage/Cards/ProductCard';
 
 const CustomerNavbar = () => {
   const[category,setcategory]=useState([]);
@@ -24,6 +25,10 @@ const CustomerNavbar = () => {
 
 
   return (
+
+    <>
+     
+    
     <Navbar className="custom-navbar" expand="lg">
       <Navbar.Brand as={Link} to="/">
         <img src='https://cdn-icons-png.flaticon.com/512/9620/9620771.png' alt="CafeLogo" className="logo-img" />
@@ -58,6 +63,8 @@ const CustomerNavbar = () => {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
+    
+    </>
   );
 };
 

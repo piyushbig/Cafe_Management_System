@@ -29,6 +29,9 @@ import ViewMyItems from "./Components/Cafe/viewMyItem";
 import CafeLogout from "./Components/Home/CafeLogout";
 import RegistrationForm from "./Components/Home/RegistrationForm";
 import AddressForm from "./Components/Home/AddressForm";
+import CustomerDashboard from "./Components/customer/CustomerDashboard";
+import ProductDetails from "./Components/Cafe/ProductDetails";
+import Payment from "./Components/customer/Payment";
 
 function App() {
   return (
@@ -52,21 +55,24 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomeNavbar />} />
-        <Route path="/homePage" element={<HomePage />} />
+        {/* <Route path="/" element={<HomeNavbar />} /> */}
+        <Route path="/" element={<HomePage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/contactUs" element={<ContactUs />} />
 
         <Route path="/registrationForm" element={<RegistrationForm />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/cafe/login" element={<CafeLogin />} />
+        <Route path="/cafe/login" element={<CafeLogin />}/>
+        <Route path="/product/details" element={<ProductDetails/>} />
       </Routes>
 
       <Routes>
-        <Route path="/customer/dashboard" element={<CustomerNavbar />} />
+        <Route path="/customer/dashboard" element={<CustomerDashboard/>} />
         <Route path="/myCart" element={<MyCart />} />
         <Route path="/myOrder" element={<MyOrder />} />
         <Route path="/AddressForm" element={<AddressForm />} />
+        <Route path="/customer/payment" element={<Payment/>} />
+
       </Routes>
       <Routes>
         <Route path="/cafe/dashboard" element={<CafeNavbar />} />

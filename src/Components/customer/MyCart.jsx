@@ -3,10 +3,13 @@ import { Alert, Button, Col, Container, Row, Table } from 'react-bootstrap';
 import { MDBContainer, MDBFooter } from 'mdb-react-ui-kit';
 import './Styles/myCart.css';
 import CustomerNavbar from './CustomerNavbar';
+import { useNavigate } from 'react-router-dom';
 
 export default function MyCart() {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch data from your backend API
@@ -20,6 +23,11 @@ export default function MyCart() {
       .then((data) => setCartItems(data))
       .catch((error) => setError(error.message));
   }, []);
+
+  function handleClick(e){
+    navigate("/customer/payment");
+
+  }
   
 
   return (
@@ -70,7 +78,7 @@ export default function MyCart() {
         <MDBContainer className="p-4"></MDBContainer>
 
         <div className="text-end p-3" id="footer">
-          <Button  id="btn">
+          <Button  id="btn" onClick={handleClick}>
             CheckOut
           </Button>{' '}
         </div>

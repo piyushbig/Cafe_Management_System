@@ -11,7 +11,7 @@ const HomeNavbar = () => {
     
     <>
     <Navbar className="custom-navbar" expand="lg">
-      <Navbar.Brand as={Link} to="/homePage">
+      <Navbar.Brand as={Link} to="/">
         <img src='https://cdn-icons-png.flaticon.com/512/9620/9620771.png' alt="CafeLogo" className="logo-img" />
         Cafeto
       </Navbar.Brand>

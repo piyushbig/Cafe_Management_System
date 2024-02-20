@@ -51,6 +51,7 @@ const Login = () => {
         console.log(response.data.token);
        console.log(response.data.message)
        localStorage.setItem("token",JSON.stringify(response.data.token));
+       localStorage.setItem("userID",response.data.id);
        console.log(getToken());
       //  console.log(localStorage.getItem("token"));
 

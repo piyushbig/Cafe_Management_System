@@ -32,6 +32,7 @@ import AddressForm from "./Components/Home/AddressForm";
 import CustomerDashboard from "./Components/customer/CustomerDashboard";
 import ProductDetails from "./Components/Cafe/ProductDetails";
 import Payment from "./Components/customer/Payment";
+import Protected from "./Components/login/protected";
 
 function App() {
   return (
@@ -55,37 +56,38 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<HomeNavbar />} /> */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/aboutUs" element={<AboutUs />} />
+      <Route path="/" element={<HomePage />} />
+        <Route path="/aboutUs" element={<Protected Component={AboutUs} />} />
+       
+        {/* <Route path="/aboutUs" element={<AboutUs />} /> */}
         <Route path="/contactUs" element={<ContactUs />} />
 
         <Route path="/registrationForm" element={<RegistrationForm />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/cafe/login" element={<CafeLogin />}/>
-        <Route path="/product/details" element={<ProductDetails/>} />
+       
+        <Route path="/product/details" element={< Protected Component={ProductDetails}/>} />
       </Routes>
 
       <Routes>
-        <Route path="/customer/dashboard" element={<CustomerDashboard/>} />
-        <Route path="/myCart" element={<MyCart />} />
-        <Route path="/myOrder" element={<MyOrder />} />
-        <Route path="/AddressForm" element={<AddressForm />} />
-        <Route path="/customer/payment" element={<Payment/>} />
+        <Route path="/customer/dashboard" element={< Protected Component={CustomerDashboard}/>} />
+        <Route path="/myCart" element={<Protected Component={MyCart} />} />
+        <Route path="/myOrder" element={<Protected Component={MyOrder} />} />
+        <Route path="/AddressForm" element={<Protected Component={AddressForm} />} />
+        <Route path="/customer/payment" element={<Protected Component={Payment}/>} />
 
       </Routes>
       <Routes>
-        <Route path="/cafe/dashboard" element={<CafeNavbar />} />
-        <Route path="/reastuarantOrder" element={<CafeOrder />} />
-        <Route path="/addFood" element={<AddFood />} />
-        <Route path="/viewMyItems" element={<ViewMyItems />} />
+        <Route path="/cafe/dashboard" element={<Protected Component={CafeNavbar} />} />
+        <Route path="/reastuarantOrder" element={<Protected Component={CafeOrder} />} />
+        <Route path="/addFood" element={<Protected Component={AddFood} />} />
+        <Route path="/viewMyItems" element={<Protected Component={ViewMyItems} />} />
       </Routes>
       <Routes>
-        <Route path="/admin/dashboard" element={<NavbarAdmin />} />
-        <Route path="/addCategory" element={<AddCategory />} />
+        <Route path="/admin/dashboard" element={<Protected Component={NavbarAdmin} />} />
+        <Route path="/addCategory" element={<Protected Component={AddCategory} />} />
 
-        <Route path="/allCatrgories" element={<AllCategories />} />
-        <Route path="/allCafes" element={<AllCafe />} />
+        <Route path="/allCatrgories" element={<Protected Component={AllCategories} />} />
+        <Route path="/allCafes" element={<Protected Component={AllCafe} />} />
       </Routes>
     </BrowserRouter>
   );

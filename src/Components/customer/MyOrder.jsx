@@ -11,7 +11,8 @@ export default function MyOrder(){
   
 
    useEffect(() => {
-    axios.get(`http://localhost:8086/orders/orderitem/fetch`)
+    const currentUser =localStorage.getItem("userID")
+    axios.get(`http://localhost:8086/orders/orderitem/fetch/${currentUser}`)
         .then((response) => {
             setOrderList(response.data);
             console.log(response.data);

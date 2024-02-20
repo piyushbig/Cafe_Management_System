@@ -18,7 +18,9 @@ function ViewMyItems() {
   });
 
   const populateData=()=>{
-    axios.get('http://localhost:8086/products/fetchAll').then((response => {
+    const currentUser =localStorage.getItem('userID');
+    console.log(currentUser);
+    axios.get(`http://localhost:8086/products/product/fetchById/${currentUser}`).then((response => {
         setItemList(response.data);
     }))
   }

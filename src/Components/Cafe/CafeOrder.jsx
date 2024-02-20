@@ -62,7 +62,7 @@ export default function CafeOrder() {
  
 
   const handleUpdate = async (e) => {
-    e.preventDefault();
+    
     try {
       console.log("Updating with:", selectedFoodItem);
       console.log("Order ID:", selectedFoodItem.id);
@@ -216,7 +216,7 @@ export default function CafeOrder() {
                       onChange={handleStatusChange}
                       required
                     >
-                      <option value="pending">Pending</option>
+                      
                       <option value="delivered">Delivered</option>
                       <option value="cancelled">Cancelled</option>
                     </Form.Control>

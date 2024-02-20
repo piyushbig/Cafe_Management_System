@@ -94,6 +94,7 @@ function ViewMyItems() {
                   <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }} >Name</th>       
                    <th className="text-center"style={{ backgroundColor: '#325f53', color: '#ffffff' }} >Price</th>
                   <th className="text-center "style={{ backgroundColor: '#325f53', color: '#ffffff' }} >Action</th>
+                  
 
                 </tr>
               </thead>

@@ -32,10 +32,11 @@ const HomePage = () => {
       {/* Footer with a form and search button */}
       {/* <div className="footer"> */}
         </div>
-        <SearchBar/>
+        {/* <SearchBar/> */}
       {/* </div> */}
     
-        <ProductCard/>
+        {/* <ProductCard/> */}
+        <SearchBar/>
         <Footer />
     </>
   );

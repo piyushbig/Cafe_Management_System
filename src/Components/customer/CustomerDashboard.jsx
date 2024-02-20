@@ -7,6 +7,7 @@ import axios from 'axios';
 import { logout } from '../login/Auth';
 import ProductCard from '../Home/HomePage/Cards/ProductCard';
 import CustomerNavbar from './CustomerNavbar';
+import SearchBar from '../Home/HomePage/SearchBar';
 const CustomerDashboard = () => {
   const[category,setcategory]=useState([]);
 
@@ -29,7 +30,8 @@ const CustomerDashboard = () => {
     <>
      
     <CustomerNavbar/>
-    <ProductCard/>
+    {/* <ProductCard/> */}
+    <SearchBar/>
     </>
   );
 };

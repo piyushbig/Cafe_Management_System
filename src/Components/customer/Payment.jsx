@@ -1,24 +1,35 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ThankYou from './ThankYou';
+
 
 
 const Payment = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-//   const [error, setError] = useState(null);
   const [cartItems, setCartItems] = useState([]);
-  let totalCartPrice = 0;
-
+  const [totalCartPrice, setTotalCartPrice] = useState(0);
   const [error, setError] = useState({});
 
+  const userId = localStorage.getItem('userID');
+
   useEffect(() => {
-    axios.get('http://localhost:8086/products/details/approved')
+    axios.get(`http://localhost:8086/carts/user/${userId}`)
       .then((response) => {
         setCartItems(response.data);
+        calculateTotalPrice(response.data);
       })
       .catch((error) => {
         setError({ message: error.message });
       });
   }, []);
+
+  const calculateTotalPrice = (items) => {
+    let total = 0;
+    items.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    setTotalCartPrice(total);
+  };
 
   const handlePayment = async () => {
     try {
@@ -40,7 +51,8 @@ const Payment = () => {
         prefill: {
           name: 'name',
           email: 'cafetto@cafe.com',
-          contact: '9876543210',
+          contact: '9898656532',
+
         },
         notes: {
           address: 'Mumbai',
@@ -57,68 +69,50 @@ const Payment = () => {
 
   return (
     <div className='py-4'>
-        <div className='container'>
-          <div className='row'>
-            
-
-
-            <div>
+      <div className='container'>
+        <div className='row'>
+          <div>
             {paymentSuccess ? (
-                <p>Payment successful!</p>
+              <ThankYou totalCartPrice={totalCartPrice}/>
             ) : (
-                // <div>
-                //   <h2>Payment</h2>
-                //   {error && <p>Error: {error}</p>}
-                //   <p>Product: Your Product</p>
-                //   <p>Total: ₹500</p> {/* Assuming the total amount is ₹500 */}
-                //   <button onClick={handlePayment}>Pay Online</button>
-                // </div>
-                <div className='col-md-5'>
+              <div className='col-md-5'>
                 <table className='table table-bordered'>
-                <thead>
+                  <thead>
                     <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
                     </tr>
-                </thead>
-                <tbody>
+                  </thead>
+                  <tbody>
                     {error.message ? (
-                    <tr>
+                      <tr>
                         <td colSpan="4">Error loading data: {error.message}</td>
-                    </tr>
+                      </tr>
                     ) : (
-                    cartItems.map((item) => {
-                        totalCartPrice += item.productPrice * item.quantity;
-                        return (
+                      cartItems.map((item) => (
                         <tr key={item.id}>
-                            <td>{item.productName}</td>
-                            <td>{item.productPrice}</td>
-                            <td>{item.quantity}</td>
-                            <td>{item.productPrice * item.quantity}</td>
+                          <td>{item.name}</td>
+                          <td>{item.price}</td>
+                          <td>{item.quantity}</td>
+                          <td>{item.price * item.quantity}</td>
                         </tr>
-                        );
-                    })
+                      ))
                     )}
                     <tr>
-                    <td colSpan="2" className='text-end fw-bold'>Grand Total</td>
-                    <td colSpan="2" className='text-end fw-bold'>{totalCartPrice}</td>
+                      <td colSpan="2" className='text-end fw-bold'>Grand Total</td>
+                      <td colSpan="2" className='text-end fw-bold'>{totalCartPrice}</td>
                     </tr>
-                </tbody>
+                  </tbody>
                 </table>
-            </div>
+                <button type='button' className='btn btn-primary mx-1' onClick={handlePayment}>Place Order</button>
+              </div>
             )}
-            <div className='col-md-12'>
-                <div className='form-group text-end'>
-                <button type='button' className='btn btn-primary mx-1'  onClick={handlePayment} >Place Order</button>
-                </div>
-            </div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./SearchBar.css"
 import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const SearchBar = () => {
   const [products, setProducts] = useState([]);
@@ -63,20 +64,27 @@ const SearchBar = () => {
         </div>
       </div>
       <div className="d-flex flex-wrap justify-content-around">
-            {products.map(product => (
+      {products.map(product => (
                 <Card key={product.productId} style={{ width: '18rem', margin: '10px' }}>
                     <Card.Body>
                         <Card.Title>{product.name}</Card.Title>
+                        <img src={`data:image/jpeg;base64,${product.imageData}`} alt={product.name} style={{ width: '100%', height: 'auto' }} />
                         <Card.Text>Category: {product.category.name}</Card.Text>
                         <Card.Text>Price: ₹ {product.price}</Card.Text>
-                        <Button variant="primary" >Add to Cart</Button>
+                        <Link to={`/productdetails/${product.productId}`}>
+                            <Button variant="primary">Add to Cart</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
             ))}
+
+            
         </div>
+        
     </div>
   );
 };
 
 export default SearchBar;
+
 

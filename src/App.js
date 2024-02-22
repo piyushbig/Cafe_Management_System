@@ -74,6 +74,7 @@ function App() {
         <Route path="/myOrder" element={<Protected Component={MyOrder} />} />
         <Route path="/AddressForm" element={<Protected Component={AddressForm} />} />
         <Route path="/customer/payment" element={<Protected Component={Payment}/>} />
+        <Route path="/productdetails/:productId" element={<ProductDetails/>}/>
 
       </Routes>
       <Routes>

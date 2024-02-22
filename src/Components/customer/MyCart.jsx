@@ -13,79 +13,84 @@ export default function MyCart() {
 
   useEffect(() => {
     // Fetch data from your backend API
-    const currentUser = localStorage.getItem('userID');
-    fetch(`http://localhost:8086/carts/addTOCart/${currentUser}`)
+    const userId = localStorage.getItem('userID'); // Retrieve userId from localStorage
+    if (!userId) {
+      // Handle the case when userId is not available in localStorage
+      setError('User ID not found in localStorage');
+      return;
+    }
+
+    fetch(`http://localhost:8086/carts/user/${userId}`) // Include userId in the API URL
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
+        console.log(response.data);
         return response.json();
       })
       .then((data) => setCartItems(data))
       .catch((error) => setError(error.message));
   }, []);
 
-  function handleClick(e){
+  function handleClick(e) {
     navigate("/customer/payment");
-
   }
-  
 
   return (
     <> 
-    <CustomerNavbar/>  
-     <Container fluid="md">
-      <Row>
-        <div id="container">
-          <Col>
-            <h1>My Cart</h1>
-          </Col>
-        </div>
-      </Row>
+      <CustomerNavbar/>  
+      <Container fluid="md">
+        <Row>
+          <div id="container">
+            <Col>
+              <h1>My Cart</h1>
+            </Col>
+          </div>
+        </Row>
 
-      <Table className="mt-4 sm-8 lg md">
-        <thead id="tbl_head">
-          <tr>
-            <th>Food Name</th>
-            <th>Category</th>
-            <th>Cafe </th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {error ? (
+        <Table className="mt-4 sm-8 lg md">
+          <thead id="tbl_head">
             <tr>
-              <td colSpan="7">Error loading data: {error}</td>
+              <th>Food Name</th>
+              <th>Category</th>
+              <th>Cafe </th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Action</th>
             </tr>
-          ) : (
-            cartItems.map((item) => (
-              <tr key={item.id}>
-                <td>{item.foodName}</td>
-                <td>{item.category}</td>
-                <td>{item.cafeName}</td>
-                <td>{item.price}</td>
-                <td>{item.quantity}</td>
-                <td><Button varient="danger" type="submit" >Update</Button> &nbsp;&nbsp;
-                <Button style={{ backgroundColor: 'red', borderColor: 'red' }} type="submit" >Delete</Button></td>
+          </thead>
+          <tbody>
+            {error ? (
+              <tr>
+                <td colSpan="7">Error loading data: {error}</td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </Table>
+            ) : (
+              cartItems.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.foodName}</td>
+                  <td>{item.category}</td>
+                  <td>{item.cafeName}</td>
+                  <td>{item.price}</td>
+                  <td>{item.quantity}</td>
+                  <td>
+                    <Button varient="danger" type="submit">Update</Button> &nbsp;&nbsp;
+                    <Button style={{ backgroundColor: 'red', borderColor: 'red' }} type="submit">Delete</Button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </Table>
 
-      <MDBFooter className="text-white ftr">
-        <MDBContainer className="p-4"></MDBContainer>
+        <MDBFooter className="text-white ftr">
+          <MDBContainer className="p-4"></MDBContainer>
 
-        <div className="text-end p-3" id="footer">
-          <Button  id="btn" onClick={handleClick}>
-            CheckOut
-          </Button>{' '}
-        </div>
-      </MDBFooter>
-    </Container>
+          <div className="text-end p-3" id="footer">
+            <Button id="btn" onClick={handleClick}>CheckOut</Button>{' '}
+          </div>
+        </MDBFooter>
+      </Container>
     </>
-
   );
 }
+

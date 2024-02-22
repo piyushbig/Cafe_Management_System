@@ -59,12 +59,12 @@ function AllCafe() {
                 cafeList.map((c)=>{
                     return(
                     <tr>
-                        <td>{c.cafeId}</td>
-                        <td>{c.name}</td>
+                        <td>{c.id}</td>
+                        <td>{c.firstName}</td>
                         <td>{c.email}</td>
                         <td>{c.address?.contactNo}</td>
                         <td>{c.address?.city}-({c.address?.street})[{c.address?.pincode}]</td>
-                        <td><Button variant="danger" onClick={()=>handleDeleteClick(c.cafeId)}> Delete</Button>&nbsp;&nbsp;&nbsp;
+                        <td><Button variant="danger" onClick={()=>handleDeleteClick(c.id)}> Delete</Button>&nbsp;&nbsp;&nbsp;
                        
                         </td>
                     

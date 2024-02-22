@@ -92,10 +92,10 @@ export default function CafeOrder() {
     }));
   };
   
-  
 
   return (
     <>
+    <CafeNavbar/>
       <Container className="container mt-5 bg-light">
         <Row className="justify-content-center">
           <Col xs={12} md={12}>

@@ -13,7 +13,8 @@ export default function MyCart() {
 
   useEffect(() => {
     // Fetch data from your backend API
-    fetch('http://localhost:8086/products/details')
+    const currentUser = localStorage.getItem('userID');
+    fetch(`http://localhost:8086/carts/addTOCart/${currentUser}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -61,10 +62,10 @@ export default function MyCart() {
           ) : (
             cartItems.map((item) => (
               <tr key={item.id}>
-                <td>{item.productName}</td>
-                <td>{item.categoryName}</td>
+                <td>{item.foodName}</td>
+                <td>{item.category}</td>
                 <td>{item.cafeName}</td>
-                <td>{item.productPrice}</td>
+                <td>{item.price}</td>
                 <td>{item.quantity}</td>
                 <td><Button varient="danger" type="submit" >Update</Button> &nbsp;&nbsp;
                 <Button style={{ backgroundColor: 'red', borderColor: 'red' }} type="submit" >Delete</Button></td>

@@ -42,8 +42,8 @@ const NavbarAdmin = () => {
                 )})}
           </NavDropdown>
           
-          <Nav.Link as={Link} to="/registerAdmin">
-            Register Admin
+          <Nav.Link as={Link} to="/registrationForm">
+            Register Admin & Cafe
           </Nav.Link>
           <Nav.Link as={Link} to="/addCategory">Add Category</Nav.Link>
           <Nav.Link as={Link} to="/allCatrgories">All Categories</Nav.Link>

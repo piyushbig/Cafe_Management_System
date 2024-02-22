@@ -45,12 +45,7 @@ const CustomerNavbar = () => {
             </NavDropdown.Item>
                 )})}
           </NavDropdown>
-          <Nav.Link as={Link} to="/aboutUs">
-            About Us
-          </Nav.Link>
-          <Nav.Link as={Link} to="/contactUs">
-            Contact Us
-          </Nav.Link>
+          
         </Nav>
         <Nav className="ml-auto">
           <Nav.Link as={Link} to="/myCart">

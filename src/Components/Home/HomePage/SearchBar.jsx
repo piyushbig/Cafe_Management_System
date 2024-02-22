@@ -55,7 +55,7 @@ const SearchBar = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Search cafe ....."
+              placeholder="Search here ....."
               value={searchQuery}
               onChange={handleChange}
             />

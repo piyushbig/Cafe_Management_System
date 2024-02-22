@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ThankYou from './ThankYou';
+import CustomerNavbar from './CustomerNavbar';
 
 
 
@@ -68,6 +69,8 @@ const Payment = () => {
   };
 
   return (
+    <>
+    <CustomerNavbar/>
     <div className='py-4'>
       <div className='container'>
         <div className='row'>
@@ -93,7 +96,7 @@ const Payment = () => {
                     ) : (
                       cartItems.map((item) => (
                         <tr key={item.id}>
-                          <td>{item.name}</td>
+                          <td>{item.foodName}</td>
                           <td>{item.price}</td>
                           <td>{item.quantity}</td>
                           <td>{item.price * item.quantity}</td>
@@ -113,6 +116,9 @@ const Payment = () => {
         </div>
       </div>
     </div>
+
+    </>
+    
   );
 };
 

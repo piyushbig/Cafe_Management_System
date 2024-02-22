@@ -53,7 +53,7 @@ export default function MyCart() {
             <tr>
               <th>Food Name</th>
               <th>Category</th>
-              <th>Cafe </th>
+              
               <th>Price</th>
               <th>Quantity</th>
               <th>Action</th>
@@ -69,7 +69,7 @@ export default function MyCart() {
                 <tr key={item.id}>
                   <td>{item.foodName}</td>
                   <td>{item.category}</td>
-                  <td>{item.cafeName}</td>
+                  
                   <td>{item.price}</td>
                   <td>{item.quantity}</td>
                   <td>

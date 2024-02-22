@@ -35,12 +35,7 @@ const CafeNavbar = () => {
             </NavDropdown.Item>
                 )})}
           </NavDropdown>
-          <Nav.Link as={Link} to="/aboutUs">
-            About Us
-          </Nav.Link>
-          <Nav.Link as={Link} to="/contact">
-            Contact Us
-          </Nav.Link>
+          
           <Nav.Link as={Link} to="/reastuarantOrder">
             Cafe Orders
           </Nav.Link>

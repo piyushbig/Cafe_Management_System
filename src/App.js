@@ -36,23 +36,7 @@ import Protected from "./Components/login/protected";
 
 function App() {
   return (
-    // <Login/>
-    // <AddFood />
-    // <foodCard/>
-
-    // <Admin/>
-    // <Home />
-    // <Customer/>
-    // <Cafe />
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<Home />} />
-    //     <Route path="/admin" element={<Admin />} />
-    //     <Route path="/customer" element={<Customer />} />
-    //     <Route path="/cafe" element={<Cafe />} />
-    //     <Route path="/login" element={<Login />} />
-    //   </Routes>
-    // </BrowserRouter>
+    
 
     <BrowserRouter>
       <Routes>
@@ -96,13 +80,4 @@ function App() {
 
 export default App;
 
-// <BrowserRouter>
-//   {/* Your router component should wrap all routes */}
-//   <Routes>
-//     <Route path="/" element={<Home />} />
-//     <Route path="/admin" element={<Admin />} />
-//     <Route path="/customer" element={<Customer />} />
-//     <Route path="/cafe" element={<Cafe />} />
-//     {/* Add more routes as needed */}
-//   </Routes>
-// </BrowserRouter>
+
